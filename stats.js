@@ -47,7 +47,6 @@ function makeUL(array) {
 		let trow = document.createElement('tr');
 		// trow.appendChild(document.createTextNode('Gracz'));
 
-		console.log(objectiveList)
 		for(var i=0; i<array.objectiveList.length; i++){
 			let th = document.createElement('th');
 			th.innerHTML = array.objectiveList[i];
@@ -59,29 +58,34 @@ function makeUL(array) {
 		table.style.width = '100%';
 		table.setAttribute('border', '1');
 
-		// for (var i = 0; i < Object.keys(array).length; i++) {
-		// 	var a = array[i]
-		// 	console.log(a)
-		//
-		// 		var tr = document.createElement('tr');
-		//
-		// 		for(var n=0; n<Object.keys(a).length; n++){
-		//
-		// 			if(typeof a[n] == 'undefined'){
-		// 				tr.appendChild(0)
-		// 			} else{
-		// 				tr.appendChild(a[n])
-		// 			}
-		// 		}
-		//
-		// 		tbody.appendChild(tr);
-		// }
+		var players = Object.keys(array)
 
-		function logMapElements(value, key, map) {
-  	console.log(`m[${key}] = ${value}`);
+		for (var i = 0; i < players.length; i++) {
+			var a = players[i]
+
+			var ks = array[a];
+			console.warn(ks)
+
+				var tr = document.createElement('tr');
+
+				var scores = Object.values(ks)
+
+				for(var n=0; n<scores.length; n++){
+					var td = document.createElement('td');
+
+					console.log(typeof scores[n])
+
+					if(typeof scores[n] == 'undefined'){
+						td.appendChild(document.createTextNode('0'))
+					} else{
+						td.appendChild(document.createTextNode(scores[n]))
+					}
+
+					tr.appendChild(td);
+				}
+
+				tbody.appendChild(tr);
 		}
-
-		// new Map(array).forEach(logMapElements);
 
 		// Finally, return the constructed list:
 		table.appendChild(tbody);
