@@ -36,10 +36,12 @@ div{
   margin: 10px;
   border-radius: 10px;
   display: inline-block;
+  text-align: center;
 }
 
 .select *{
-  font-family: 'Minecraft-Regular'
+  font-family: 'Minecraft-Regular';
+  width: 80px;
 }
 
 button{
@@ -51,6 +53,7 @@ button{
   color: white;
   border-radius: 8px;
   display: inline-block;
+  cursor:pointer;
 }
 
 .diamond{
@@ -83,39 +86,72 @@ button{
   border: 2px solid rgb(190, 157, 157);
 }
 
+.travel{
+  background-image: url('./images/compass.png');
+  border: 2px solid rgb(161, 159, 153);
+}
+
+.time{
+  background-image: url('./images/clock.png');
+  border: 2px solid rgb(170, 173, 20);
+}
+
 .button-text{
   position: relative;
   text-align: center;
   background: rgba(75, 75, 75, 0.4);
   font-size: 20px;
+  display: none;
 }
+
+#type{
+  text-align: center;
+  font-size: 70px;
+  margin-top: 50px;
+}
+
+#tabelka{
+  font-size: 30px;
+}
+
+.tab-red{
+  color: red;
+}
+
 </style>
 </head>
 <body>
 
   <div class="select" id="select">
 
-  <button type="button" class="diamond" onclick="">
+  <button type="button" class="diamond" onclick="lookFor('Diamenty')">
     <span class="button-text">Diamenty</span>
   </button>
-  <button type="button" class="emerald" onclick="">
+  <button type="button" class="emerald" onclick="lookFor('Szmaragdy')">
     <span class="button-text">Szmaragdy</span>
   </button>
-  <button type="button" class="gold" onclick="">
+  <button type="button" class="gold" onclick="lookFor('Zloto')">
     <span class="button-text">Zloto</span>
   </button>
-  <button type="button" class="iron" onclick="">
+  <button type="button" class="iron" onclick="lookFor('Zelazo')">
     <span class="button-text">Zelazo</span>
   </button>
-  <button type="button" class="coal" onclick="">
+  <button type="button" class="coal" onclick="lookFor('Wegiel')">
     <span class="button-text">Wegiel</span>
   </button>
-  <button type="button" class="quartz" onclick="">
+  <button type="button" class="quartz" onclick="lookFor('Kwarc')">
     <span class="button-text">Kwarc</span>
+  </button>
+
+
+  <button type="button" class="travel" onclick="lookFor('travelDistance')">
+  </button>
+  <button type="button" class="time" onclick="lookFor('timePlayed')">
   </button>
 
   </div>
 
+  <div id='type'></div>
   <div class="table" id="tabelka"></div>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
