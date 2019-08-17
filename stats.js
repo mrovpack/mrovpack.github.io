@@ -9,10 +9,8 @@ $.getJSON('https://andreymrovol.github.io/mrovpack-scoreboardData/scoreboard.jso
   var objectives = status.ObjectiveList;
 	var players = status.PlayerList;
 
-	objectives.splice(objectives.indexOf('xp'), 1);
-	objectives.splice(objectives.indexOf('HP'), 1);
-	objectives.splice(objectives.indexOf('Smierci'), 1);
-	objectives.splice(objectives.indexOf('food'), 1);
+	objectives.splice(objectives.indexOf('helath'), 1);
+	objectives.splice(objectives.indexOf('death'), 1);
 
 	for(var i=0; i<players.length; i++){
 		var a = players[i];
@@ -33,7 +31,7 @@ $.getJSON('https://andreymrovol.github.io/mrovpack-scoreboardData/scoreboard.jso
 	}
 
 	outputJSON['objectiveList'] = objectives;
-	document.getElementById('tabelka').appendChild(makeUL(outputJSON))
+//	document.getElementById('tabelka').appendChild(makeUL(outputJSON))
 });
 
 console.warn(outputJSON)
