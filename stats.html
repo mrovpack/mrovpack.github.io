@@ -19,7 +19,7 @@
 
 body {
     color: #cacaca;
-    font-family: 'Minecraft-Regular'
+    font-family: 'Minecraft-Regular';
     margin: 0;
     padding: 20px;
     background-color: #181818;
@@ -32,15 +32,89 @@ div{
 .select{
   width: 100%;
   height: 100px;
-  background-color: gray;
+  background-color: #202020;
   margin: 10px;
   border-radius: 10px;
+  display: inline-block;
+}
+
+.select *{
+  font-family: 'Minecraft-Regular'
+}
+
+button{
+  height:100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70% 50%;
+  background-color: inherit;
+  color: white;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.diamond{
+  background-image: url('./images/diamond.png');
+  border: 2px solid rgb(18, 186, 231);
+}
+
+.emerald{
+  background-image: url('./images/emerald.png');
+  border: 2px solid #4CAF50;
+}
+
+.gold{
+  background-image: url('./images/gold.png');
+  border: 2px solid rgb(170, 165, 38);
+}
+
+.iron{
+  background-image: url('./images/iron.png');
+  border: 2px solid rgb(152, 140, 140);
+}
+
+.coal{
+  background-image: url('./images/coal.png');
+  border: 2px solid rgb(3, 3, 3);
+}
+
+.quartz{
+  background-image: url('./images/quartz.png');
+  border: 2px solid rgb(190, 157, 157);
+}
+
+.button-text{
+  position: relative;
+  text-align: center;
+  background: rgba(75, 75, 75, 0.4);
+  font-size: 20px;
 }
 </style>
 </head>
 <body>
 
-  <div class="select" id="select"></div>
+  <div class="select" id="select">
+
+  <button type="button" class="diamond" onclick="">
+    <span class="button-text">Diamenty</span>
+  </button>
+  <button type="button" class="emerald" onclick="">
+    <span class="button-text">Szmaragdy</span>
+  </button>
+  <button type="button" class="gold" onclick="">
+    <span class="button-text">Zloto</span>
+  </button>
+  <button type="button" class="iron" onclick="">
+    <span class="button-text">Zelazo</span>
+  </button>
+  <button type="button" class="coal" onclick="">
+    <span class="button-text">Wegiel</span>
+  </button>
+  <button type="button" class="quartz" onclick="">
+    <span class="button-text">Kwarc</span>
+  </button>
+
+  </div>
 
   <div class="table" id="tabelka"></div>
 
