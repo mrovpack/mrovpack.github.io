@@ -44,10 +44,10 @@ function lookFor(objective){
 	document.getElementById('type').innerHTML = objective;
 
 	document.getElementById('tabelka').innerHTML = ''
-	document.getElementById('tabelka').appendChild(makeUL(arr));
+	document.getElementById('tabelka').appendChild(makeUL(arr, objective));
 }
 
-function makeUL(array) {
+function makeUL(array, objective) {
 	console.log(array);
 		var table = document.createElement("table");
 		var tbody = document.createElement('tbody');
@@ -92,6 +92,22 @@ function makeUL(array) {
 
 				tr.appendChild(tdP)
 				tr.appendChild(tdS)
+
+				if(objective == "timePlayed"){
+					var tdT = document.createElement('td');
+					var time = Math.round((score / 20 / 60 / 60) * 10 ) / 10;
+					tdT.appendChild(document.createTextNode(time + 'h'));
+					tdT.style.color = '#ffff55';
+					tr.appendChild(tdT);
+				}
+
+				if(objective == "travelDistance"){
+					var tdD = document.createElement('td');
+					var distance = Math.round((score/ 100 / 1000) * 10 ) / 10;
+					tdD.appendChild(document.createTextNode(distance + 'km'));
+					tdD.style.color = '#ffff55';
+					tr.appendChild(tdD);
+				}
 
 				tbody.appendChild(tr);
 		}
