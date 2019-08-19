@@ -10,12 +10,6 @@ $.getJSON('https://api.mcsrvstat.us/2/185.38.248.226:29098', function(status) {
   var players = status.players;
   var version = status.version;
 
-  if(typeof status.mods === 'undefined'){
-    var mods = ''
-  }else {
-    var mods = status.mods.names;
-  }
-
   function makeUL(array) {
       // Create the list element:
       var list = document.createElement('ul');
@@ -30,6 +24,25 @@ $.getJSON('https://api.mcsrvstat.us/2/185.38.248.226:29098', function(status) {
       // Finally, return the constructed list:
       return list;
   }
+
+	function turnLamps(players){
+
+		var row = document.getElementById('r1');
+
+		for(var i=0; i<players.max; i++){
+			let l = document.createElement('div');
+			l.className = 'lamp';
+
+			if(typeof players.list[i] != 'undefined'){
+				l.className = 'lamp on';
+			}
+
+			row.appendChild(l);
+		}
+
+
+
+	}
 
 	document.getElementById("info").innerHTML = 'Server is offline'
 	document.getElementById("list").className="hide";
@@ -50,14 +63,16 @@ $.getJSON('https://api.mcsrvstat.us/2/185.38.248.226:29098', function(status) {
 			var list = players.list;
 			document.getElementById('playerlist').appendChild(makeUL(list));
 
-			document.getElementById("info").className = "on";
+			turnLamps(players)
+
+//			document.getElementById("info").className = "on";
 		}else{
 			document.getElementById("list").className="hide";
 			document.getElementById("info").className = "off";
 			document.getElementById("players").innerHTML = players.online + ' players online';
 		}
 
-    document.getElementById('mods').appendChild(makeUL(mods));
+//    document.getElementById('mods').appendChild(makeUL(status.mods.names));
   }
 
 
