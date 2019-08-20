@@ -30,25 +30,14 @@ $.getJSON('https://api.mcsrvstat.us/2/185.38.248.226:29098', function(status) {
 		var row = document.getElementById('r1');
 
 		for(var i=0; i<players.max; i++){
-
-			let pl = document.createElement('div');
-			pl.className = 'player';
-
-			let name = document.createElement('div');
-			name.className = 'name';
-
 			let l = document.createElement('div');
 			l.className = 'lamp';
 
 			if(typeof players.list[i] != 'undefined'){
 				l.className = 'lamp on';
-				name.innerHTML = players.list[i];
 			}
 
-			pl.appendChild(l);
-			pl.appendChild(name);
-
-			row.appendChild(pl);
+			row.appendChild(l);
 		}
 
 
@@ -72,7 +61,7 @@ $.getJSON('https://api.mcsrvstat.us/2/185.38.248.226:29098', function(status) {
 			}
 
 			var list = players.list;
-//			document.getElementById('playerlist').appendChild(makeUL(list));
+			document.getElementById('playerlist').appendChild(makeUL(list));
 
 			turnLamps(players)
 
