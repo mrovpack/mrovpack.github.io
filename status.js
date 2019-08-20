@@ -65,11 +65,11 @@ $.getJSON('https://api.mcsrvstat.us/2/185.38.248.226:29098', function(status) {
 		if(players.online != 0){
 			document.getElementById("list").className="show";
 
-			// if(players.online == 1){
-			// 	document.getElementById("players").innerHTML = players.online + ' player online!';
-			// } else{
-			// 	document.getElementById("players").innerHTML = players.online + ' players online!';
-			// }
+			if(players.online == 1){
+				document.getElementById("players").innerHTML = players.online + ' player online!';
+			} else{
+				document.getElementById("players").innerHTML = players.online + ' players online!';
+			}
 
 			var list = players.list;
 //			document.getElementById('playerlist').appendChild(makeUL(list));
@@ -80,7 +80,7 @@ $.getJSON('https://api.mcsrvstat.us/2/185.38.248.226:29098', function(status) {
 		}else{
 			document.getElementById("list").className="hide";
 			document.getElementById("info").className = "off";
-//			document.getElementById("players").innerHTML = players.online + ' players online';
+			document.getElementById("players").innerHTML = players.online + ' players online';
 		}
 
 //    document.getElementById('mods').appendChild(makeUL(status.mods.names));
