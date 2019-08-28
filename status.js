@@ -1,5 +1,5 @@
 //Get the status
-$.getJSON('https://api.mcsrvstat.us/2/185.38.248.226:29098', function(status) {
+$.getJSON('https://api.mcsrvstat.us/2/185.38.248.184:28044', function(status) {
 	//Show the version
 	console.log(status);
   console.log(status.online)
