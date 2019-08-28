@@ -4,31 +4,6 @@ var objectiveList;
 
 $.getJSON('https://andreymrovol.github.io/mrovpack-scoreboardData/scoreboard.json', function(status) {
 	console.log(status);
-	scoreboardJSON = status;
-
-  // var objectives = status.ObjectiveList;
-	// var players = status.PlayerList;
-	//
-	// objectives.splice(objectives.indexOf('health'), 1);
-	// objectives.splice(objectives.indexOf('death'), 1);
-	//
-	// for(var i=0; i<players.length; i++){
-	// 	var a = players[i];
-	//
-	// 	outputJSON[a] = {};
-	// 	var d = outputJSON[a];
-	//
-	// 	for(var n=0; n<objectives.length; n++){
-	// 		var objectiveName = objectives[n];
-	//
-	// 		if(typeof status[objectiveName][a] != 'undefined'){
-	//
-	// 			d[objectiveName] = status[objectiveName][a];
-	// 		}
-	//
-	// 	}
-	//
-	// }
 
 	dataReady(status);
 	lookFor('Diamenty');
@@ -101,7 +76,9 @@ function makeUL(array, objective) {
 					tr.appendChild(tdT);
 				}
 
-				if(objective == "travelDistance"){
+				if(objective == "distanceTotal"){
+					score = readDistances(player)
+					console.log(score)
 					var tdD = document.createElement('td');
 					var distance = Math.round((score/ 100 / 1000) * 10 ) / 10;
 					tdD.appendChild(document.createTextNode(distance + 'km'));
@@ -118,3 +95,11 @@ function makeUL(array, objective) {
 		console.warn(table);
 		return table;
 }
+
+function readDistances(player){
+	var dist = getDistancesJSON();
+
+	console.log(dist)
+	return dist;
+}
+readDistances('Gaworek');
