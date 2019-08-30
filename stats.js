@@ -3,7 +3,6 @@ var scoreboardJSON;
 var objectiveList;
 
 $.getJSON('https://andreymrovol.github.io/mrovpack-scoreboardData/scoreboard.json', function(status) {
-	console.log(status);
 
 	dataReady(status);
 	lookFor('Diamenty');
@@ -11,6 +10,7 @@ $.getJSON('https://andreymrovol.github.io/mrovpack-scoreboardData/scoreboard.jso
 
 function dataReady(json){
 	scoreboardJSON = json;
+	totalDistances();
 }
 
 function lookFor(objective){
@@ -23,25 +23,10 @@ function lookFor(objective){
 }
 
 function makeUL(array, objective) {
-	console.log(array);
 		var table = document.createElement("table");
 		var tbody = document.createElement('tbody');
 
-		// let trow = document.createElement('tr');
-		//
-		// let thP = document.createElement('th');
-		// thP.innerHTML = 'Player'
-		// trow.appendChild(thP);
-		//
-		// let thS = document.createElement('th');
-		// thS.innerHTML = "Score"
-		// trow.appendChild(thS);
-		//
-		// tbody.appendChild(trow);
-
-	//	table.style.width = '100%';
 		table.setAttribute('align', 'center')
-		// table.setAttribute('border', '1');
 
 		function getKeyByValue(object, value) {
 		return Object.keys(object).find(key => object[key] === value);
@@ -77,8 +62,6 @@ function makeUL(array, objective) {
 				}
 
 				if(objective == "distanceTotal"){
-					score = readDistances(player)
-					console.log(score)
 					var tdD = document.createElement('td');
 					var distance = Math.round((score/ 100 / 1000) * 10 ) / 10;
 					tdD.appendChild(document.createTextNode(distance + 'km'));
@@ -91,15 +74,30 @@ function makeUL(array, objective) {
 
 		// Finally, return the constructed list:
 		table.appendChild(tbody);
-
-		console.warn(table);
 		return table;
 }
 
-function readDistances(player){
-	var dist = getDistancesJSON();
+function totalDistances(){
+	players = Object.keys(scoreboardJSON['distanceWalk']);
+  distanceObjectives = ['distanceSwim', 'distanceFly', 'distanceWalk', 'distanceCrouch', 'distanceSprint']
 
-	console.log(dist)
-	return dist;
+  for(var i=0; i<players.length; i++){
+    let a = players[i];
+
+    let b = {};
+    let c = b['distanceTotal'] = '';
+
+    for(var o=0; o<distanceObjectives.length; o++){
+      let objName = distanceObjectives[o];
+
+      b[objName] = scoreboardJSON[objName][a];
+      b['distanceTotal'] = +b['distanceTotal'] + +scoreboardJSON[objName][a];
+    }
+
+		outputJSON[a] = b;
+		scoreboardJSON['distanceTotal'][a] = b['distanceTotal'];
+
+  }
+
+	return outputJSON;
 }
-readDistances('Gaworek');
