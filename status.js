@@ -1,5 +1,5 @@
 //Get the status
-$.getJSON('https://api.mcsrvstat.us/2/185.38.248.184:28044', function(status) {
+$.getJSON('https://api.mcsrvstat.us/2/mrovpack.maxcraft.pl:28044', function(status) {
 	//Show the version
 	console.log(status);
   console.log(status.online)
@@ -46,10 +46,12 @@ $.getJSON('https://api.mcsrvstat.us/2/185.38.248.184:28044', function(status) {
 
 	document.getElementById("info").innerHTML = 'Server is offline'
 	document.getElementById("list").className="hide";
+	document.getElementById("playerpill").style.visibility = 'collapse';
   if(online){
 		document.getElementById("ip").innerHTML = 'IP: ' + ip + ':' + port;
 		document.getElementById("info").innerHTML = 'Server is online '
     document.getElementById("version").innerHTML = 'Running on version ' + version;
+		document.getElementById("playerpill").style.visibility = 'visible';
 
 		if(players.online != 0){
 			document.getElementById("list").className="show";
