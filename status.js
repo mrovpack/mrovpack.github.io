@@ -1,5 +1,7 @@
+const serverIP = "mrovpack.maxcraft.pl:26424";
+
 //Get the status
-$.getJSON('https://api.mcsrvstat.us/2/mrovpack.maxcraft.pl:28044', function(status) {
+$.getJSON('https://api.mcsrvstat.us/2/' + serverIP, function(status) {
 	//Show the version
 	console.log(status);
   console.log(status.online)
