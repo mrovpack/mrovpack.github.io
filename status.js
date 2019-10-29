@@ -49,11 +49,13 @@ $.getJSON('https://api.mcsrvstat.us/2/' + serverIP, function(status) {
 	document.getElementById("info").innerHTML = 'Server is offline'
 	document.getElementById("list").className="hide";
 	document.getElementById("playerpill").style.visibility = 'collapse';
+	document.querySelector("link[rel*='icon']").href = "https://mrovpack.github.io/assets/status/off.png";
   if(online){
 		document.getElementById("ip").innerHTML = 'IP: ' + ip + ':' + port;
 		document.getElementById("info").innerHTML = 'Server is online '
     document.getElementById("version").innerHTML = 'Running on version ' + version;
 		document.getElementById("playerpill").style.visibility = 'visible';
+		document.querySelector("link[rel*='icon']").href = "https://mrovpack.github.io/assets/status/on.png";
 
 		if(players.online != 0){
 			document.getElementById("list").className="show";
