@@ -1,54 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MrovPack</title>
+<title>MrovPack Mods</title>
 <link rel="shortcut icon" type="image/png" href="https://mrovpack.github.io/assets/icon.png"/>
 <link rel="stylesheet" href="https://mrovpack.github.io/assets/style.css">
 <style>
+
+body{
+  font-size: 22px;
+}
 
 a{
   color: #f57c00;
   text-decoration: none;
 }
 
-.center{
+h1{
   text-align: center;
-  margin: 20px;
-  background-color: #202020;
-  border-radius: 20px;
-  display: grid;
-  padding: 15px;
-}
-
-.row{
-  display: flex;
-  align-self: center;
-  padding: 5px;
-  justify-self: center;
 }
 
 ul{
-  width: 100px;
+  width: 250px;
   text-align: center;
   align-self: center;
   justify-self: center;
   margin: 0 auto;
   padding: 10px;
+  list-style-type: none;
 }
 
 </style>
 </head>
 <body>
 
-  <div class="center">
-  <h1><a href="https://mrovpack.github.io/discord"> Join our Discord Server </a></h1>
-  </div>
+  <h1> Mod Wiki List </h1>
 
-  <div class="center">
-  <a href="https://mrovpack.github.io/status"> Server Status </a>
-  </div>
+  <div id="list"></div>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src="./wiki.js"></script>
 
 </body>
 </html>

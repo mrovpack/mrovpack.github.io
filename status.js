@@ -28,32 +28,65 @@ $.getJSON('https://api.mcsrvstat.us/2/' + serverIP, function(status) {
   }
 
 	function turnLamps(players){
+		var grid = document.createElement('div');
 
-		var row = document.getElementById('r1');
+		for(player of players.list){
+			let a = player;
 
-		for(var i=0; i<players.max; i++){
+			var row = document.createElement('div');
+			row.className = "row";
+			row.style["display"] = "flex";
+			row.style["background"] = "#303030";
+			row.style["margin"] = "5px";
+			row.style["border-radius"] = "15px";
+
 			let l = document.createElement('div');
 			l.className = 'lamp';
+			l.style["height"] = "35px";
+			l.style["width"] = "35px";
 
-			if(typeof players.list[i] != 'undefined'){
+			let name = document.createElement("div");
+			name.innerHTML = a;
+			name.className = 'name';
+			name.style["align-self"] = "center";
+			name.style["padding"] = "10px";
+
+			if(typeof a != 'undefined'){
 				l.className = 'lamp on';
 			}
 
 			row.appendChild(l);
+			row.appendChild(name)
+
+			grid.appendChild(row);
 		}
 
 
+		// let count = 0;
+		// for(var i=0; i<players.max; i++){
+		// 	let l = document.createElement('div');
+		// 	l.className = 'lamp';
+//
+		// 	if(typeof players.list[i] != 'undefined'){
+		// 		l.className = 'lamp on';
+		// 	}
+//
+		// 	row.appendChild(l);
+		// }
 
+		$("#lamps").append(grid);
 	}
 
 	document.getElementById("info").innerHTML = 'Server is offline'
 	document.getElementById("list").className="hide";
 	document.getElementById("playerpill").style.visibility = 'collapse';
+	document.querySelector("link[rel*='icon']").href = "https://mrovpack.github.io/assets/status/off.png";
   if(online){
 		document.getElementById("ip").innerHTML = 'IP: ' + ip + ':' + port;
 		document.getElementById("info").innerHTML = 'Server is online '
     document.getElementById("version").innerHTML = 'Running on version ' + version;
 		document.getElementById("playerpill").style.visibility = 'visible';
+		document.querySelector("link[rel*='icon']").href = "https://mrovpack.github.io/assets/status/on.png";
 
 		if(players.online != 0){
 			document.getElementById("list").className="show";
@@ -65,7 +98,7 @@ $.getJSON('https://api.mcsrvstat.us/2/' + serverIP, function(status) {
 			}
 
 			var list = players.list;
-			document.getElementById('playerlist').appendChild(makeUL(list));
+			// document.getElementById('playerlist').appendChild(makeUL(list));
 
 			turnLamps(players)
 
