@@ -47,6 +47,7 @@ $.getJSON('https://api.mcsrvstat.us/2/' + serverIP, function(status) {
 
 			let name = document.createElement("div");
 			name.innerHTML = a;
+			name.className = 'name';
 			name.style["align-self"] = "center";
 			name.style["padding"] = "10px";
 
