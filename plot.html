@@ -4,16 +4,66 @@
 <title>MrovPack Server Status</title>
 <link rel="shortcut icon" type="image/png" href="https://mrovpack.github.io/assets/icon.png"/>
 <link rel="stylesheet" href="https://mrovpack.github.io/assets/style.css">
-<meta http-equiv="refresh" content="15" >
+<!-- <meta http-equiv="refresh" content="15" > -->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 <style>
 
+.main{
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.cell{
+  flex: 2 1 0px; /* The important bit. This percentage decides your columns.
+ The percent can be px. It just represents your minimum starting width.
+  */
+  margin: 10px;
+  background: #222222;
+  color: white;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 5px 15px;
+  touch-action: manipulation;
+  text-align: center;
+  justify-self: center;
+  /* align-self: center; */
+}
+
+tr{
+  text-align: left;
+}
+
+h2{
+  /* font-weight: normal; */
+  font-size: 30px;
+  color: #f57c00;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 </style>
 </head>
 <body>
 
+<div class="main">
 
+  <div class="cell">
+    <h2> Members </h2>
+    <div id="members"></div>
+  </div>
+
+  <div class="cell">
+    <h2> Trusted </h2>
+    <div id="trusted"></div>
+  </div>
+
+</div>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 <script src="plot.js"></script>
