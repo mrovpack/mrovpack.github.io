@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="https://mrovpack.github.io/assets/style.css">
 <!-- <meta http-equiv="refresh" content="15" > -->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha256-Daf8GuI2eLKHJlOWLRR/zRy9Clqcj4TUSumbxYH9kGI="
+    crossorigin="anonymous" defer></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 <style>
 
@@ -57,9 +59,94 @@ h2{
   text-decoration: underline;
   cursor: pointer;
 }
+
+#popup {
+  display: none;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.75);
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+#popup.active {
+  display: flex;
+  animation: popup .5s;
+}
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.alert {
+  padding: 20px;
+  background-color: #669e00;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #141422;
+}
+
+.apply_command {
+  position: relative;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.apply_command::after {
+  content: "Copied to clipboard!";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: white;
+  border-radius: 4px;
+  opacity: 0;
+  display: none;
+}
+
+.apply_command.copied::after {
+  animation: copied 4s;
+  display: initial;
+}
+
 </style>
 </head>
 <body>
+
+  <div id="popup"></div>
 
   <div class="cell">
     <h2> Plot </h2>

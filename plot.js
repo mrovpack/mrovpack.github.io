@@ -1,5 +1,5 @@
 let params = document.location.search || window.location.hash;
-params = "#fvhpZMqU8K";
+// params = "#iJn0VPQW27";
 console.warn(params);
 
 if (params) {
@@ -14,8 +14,12 @@ if (params) {
         $.getJSON(params, function(data) {
           console.log(data)
           dataReady(data);
+          finishLoading();
         });
       }
+} else {
+  $("body").html("");
+  // window.location.replace("http://mrovpack.github.io/status");
 }
 
 function dataReady(data){
@@ -143,6 +147,7 @@ function createInputRow(type){
   image.style["vertical-align"] = "middle";
   image.style["text-align"] = "center";
   image.src = "./images/icons/add.png"
+  image.id = type + "-add"
   image.setAttribute('onclick', onClick);
   image.setAttribute('cursor', "pointer");
 
@@ -159,6 +164,8 @@ function createInputRow(type){
 
 function addUser(input, type){
   var text = $("#" + input).val();
+
+  // if(text = "" || text === " "){ return; }
 
   var tableID = "#table" + type.charAt(0).toUpperCase() + type.slice(1);
 
@@ -197,4 +204,61 @@ function saveAll(){
   }
   console.log(setTrusted)
   commands.push(setTrusted)
+
+  outputJSON["commands"] = commands;
+
+  const callback = function(data){
+    const id = data["key"];
+    console.log("Save id: " + id);
+
+    let content = "";
+    content += '<div class="alert">';
+    // content += '<span class="closebtn">&times;</span>';
+    content +=
+        '<strong>Success!</strong> Data was saved. Run <code class="apply_command" class="clickable" title="Copy to clipboard">' +
+        ".plot apply " + id + '</code> to apply your changes.</div>';
+
+    const popup = $("#popup");
+    popup.append(content);
+    popup.addClass('active');
+
+    function copyToClipboard(text) {
+    var dummy = document.createElement("textarea");
+    // to avoid breaking orgain page when copying more words
+    // cant copy when adding below this code
+    // dummy.style.display = 'none'
+    document.body.appendChild(dummy);
+    //Be careful if you use texarea. setAttribute('value', value), which works with "input" does not work with "textarea". – Eduard
+    dummy.value = text;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+}
+
+    var command = $('.apply_command')[0].innerHTML;
+    document.getElementsByClassName("apply_command")[0].addEventListener("click", copyToClipboard(command));
+    console.log(command)
+  }
+
+  $.ajax(URL + "post", {
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      data: JSON.stringify(outputJSON, null, 2),
+      method: "POST",
+      success: callback
+  });
+}
+
+function finishLoading(){
+  $("#members-new").keypress(function(event) {
+              if (event.keyCode === 13) {
+                  $("#members-add").click();
+              }
+          });
+
+  $("#trusted-new").keypress(function(event) {
+              if (event.keyCode === 13) {
+                  $("#trusted-add").click();
+              }
+          });
 }
