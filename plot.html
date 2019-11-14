@@ -29,6 +29,7 @@
   text-align: center;
   justify-self: center;
   /* align-self: center; */
+  /* padding-bottom: 15px; */
 }
 
 tr{
@@ -42,14 +43,28 @@ h2{
 }
 
 .center{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    cursor: pointer;
 }
 
+.table{
+  background: #333333;
+  /* border-radius: 10px; */
+  padding: 10px 10px;
+  width: 100%;
+}
+
+#save{
+  text-decoration: underline;
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
+
+  <div class="cell">
+    <h2> Plot </h2>
+    <h4 id="username"></h4>
+  </div>
 
 <div class="main">
 
@@ -63,6 +78,10 @@ h2{
     <div id="trusted"></div>
   </div>
 
+</div>
+
+<div class="cell">
+  <h2 id="save" onclick="saveAll()"> Save all changes </h2>
 </div>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
