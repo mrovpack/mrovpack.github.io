@@ -205,6 +205,8 @@ function saveAll(){
   console.log(setTrusted)
   commands.push(setTrusted)
 
+  commands.push("foxguard save");
+
   outputJSON["commands"] = commands;
 
   const callback = function(data){
