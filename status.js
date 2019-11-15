@@ -1,117 +1,89 @@
 const serverIP = "mrovpack.maxcraft.pl:26424";
 
-//Get the status
+//Get server status
 $.getJSON('https://api.mcsrvstat.us/2/' + serverIP, function(status) {
-	//Show the version
-	console.log(status);
-  console.log(status.online)
+	dataReady(status);
+});
 
-  var online = status.online;
-  var ip = status.ip;
-  var port = status.port;
-  var players = status.players;
-  var version = status.version;
+function turnLamps(players){
+	var grid = document.createElement('div');
 
-  function makeUL(array) {
-      // Create the list element:
-      var list = document.createElement('ul');
-      for (var i = 0; i < array.length; i++) {
-          // Create the list item:
-          var item = document.createElement('li');
-          // Set its contents:
-          item.appendChild(document.createTextNode(array[i]));
-          // Add it to the list:
-          list.appendChild(item);
-      }
-      // Finally, return the constructed list:
-      return list;
-  }
+	for(player of players.list){
+		let a = player;
 
-	function turnLamps(players){
-		var grid = document.createElement('div');
+		var row = document.createElement('div');
+		row.className = "row";
+		row.style["display"] = "flex";
+		row.style["background"] = "#303030";
+		row.style["margin"] = "5px";
+		row.style["border-radius"] = "15px";
 
-		for(player of players.list){
-			let a = player;
+		let l = document.createElement('div');
+		l.className = 'lamp';
+		l.style["height"] = "35px";
+		l.style["width"] = "35px";
 
-			var row = document.createElement('div');
-			row.className = "row";
-			row.style["display"] = "flex";
-			row.style["background"] = "#303030";
-			row.style["margin"] = "5px";
-			row.style["border-radius"] = "15px";
+		let name = document.createElement("div");
+		name.innerHTML = a;
+		name.className = 'name';
+		name.style["align-self"] = "center";
+		name.style["padding"] = "10px";
 
-			let l = document.createElement('div');
-			l.className = 'lamp';
-			l.style["height"] = "35px";
-			l.style["width"] = "35px";
-
-			let name = document.createElement("div");
-			name.innerHTML = a;
-			name.className = 'name';
-			name.style["align-self"] = "center";
-			name.style["padding"] = "10px";
-
-			if(typeof a != 'undefined'){
-				l.className = 'lamp on';
-			}
-
-			row.appendChild(l);
-			row.appendChild(name)
-
-			grid.appendChild(row);
+		if(typeof a != 'undefined'){
+			l.className = 'lamp on';
 		}
 
+		row.appendChild(l);
+		row.appendChild(name)
 
-		// let count = 0;
-		// for(var i=0; i<players.max; i++){
-		// 	let l = document.createElement('div');
-		// 	l.className = 'lamp';
-//
-		// 	if(typeof players.list[i] != 'undefined'){
-		// 		l.className = 'lamp on';
-		// 	}
-//
-		// 	row.appendChild(l);
-		// }
-
-		$("#lamps").append(grid);
+		grid.appendChild(row);
 	}
 
-	document.getElementById("info").innerHTML = 'Server is offline'
-	document.getElementById("list").className="hide";
-	document.getElementById("playerpill").style.visibility = 'collapse';
-	document.querySelector("link[rel*='icon']").href = "https://mrovpack.github.io/assets/status/off.png";
-  if(online){
-		document.getElementById("ip").innerHTML = 'IP: ' + ip + ':' + port;
-		document.getElementById("info").innerHTML = 'Server is online '
-    document.getElementById("version").innerHTML = 'Running on version ' + version;
-		document.getElementById("playerpill").style.visibility = 'visible';
-		document.querySelector("link[rel*='icon']").href = "https://mrovpack.github.io/assets/status/on.png";
+	$("#lamps").append(grid);
+}
+
+
+function dataReady(data){
+	console.log(data);
+	console.log(data.online)
+
+	var online = data.online;
+	var ip = data.ip;
+	var port = data.port;
+	var players = data.players;
+	var version = data.version;
+
+
+	$("#info").html("Server is offline");
+	$("#list").attr('class', 'hide');
+	$("#playerpill").css('visibility', "collapse");
+	document.querySelector("link[rel*='icon']").href = "https://mrovpack.github.io/assets/data/off.png";
+	if(online){
+		$("#ip").html('IP: ' + ip + ':' + port);
+		$("#info").html('Server is online ');
+		$("#version").html('Running on version ' + version)
+		$("#playerpill").css('visibility', 'visible');
+		document.querySelector("link[rel*='icon']").href = "https://mrovpack.github.io/assets/data/on.png";
 
 		if(players.online != 0){
-			document.getElementById("list").className="show";
+			$("#list").attr('class', 'show');
 
 			if(players.online == 1){
-				document.getElementById("players").innerHTML = players.online + ' player online!';
+				$("#players").html(players.online + ' player online!')
 			} else{
-				document.getElementById("players").innerHTML = players.online + ' players online!';
+				$("#players").html(players.online + ' players online!')
 			}
 
 			var list = players.list;
-			// document.getElementById('playerlist').appendChild(makeUL(list));
 
 			turnLamps(players)
 
 //			document.getElementById("info").className = "on";
 		}else{
-			document.getElementById("list").className="hide";
-			document.getElementById("info").className = "off";
-			document.getElementById("players").innerHTML = players.online + ' players online';
+			$("#list").attr('class', 'hide');
+			$("#info").attr('class', 'off');
+			$("#players").html(players.online + ' players online!')
 		}
 
-//    document.getElementById('mods').appendChild(makeUL(status.mods.names));
-  }
-
-
-
-});
+	}
+}
