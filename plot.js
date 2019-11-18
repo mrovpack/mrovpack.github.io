@@ -19,13 +19,23 @@ if (params) {
       }
 } else {
   $("body").html("");
-  // window.location.replace("http://mrovpack.github.io/status");
+
+  // Redirect to plot wiki
+  // window.location.replace("http://github.com/mrovpack/help/wiki/plot");
 }
 
 function dataReady(data){
   console.log(data.username)
 
   $("#username").html(data.username);
+
+  // var tables = ['members', 'trusted'];
+  //
+  // for(item of tables){
+  //   var table = document.createElement('table');
+  //   table.className = "table";
+  //   table.id = ""
+  // }
 
   var tableMembers = document.createElement('table');
   var tableTrusted = document.createElement('table');
@@ -75,28 +85,20 @@ function createRow(input, type){
   var tdButtons = document.createElement('td');
 
   var image = document.createElement('img');
-  image.style["width"] = "25px";
-  image.style["height"] = "25px";
-  image.style["vertical-align"] = "middle";
-  image.style["text-align"] = "center";
+  image.className = "button";
   image.src = "./images/icons/delete.png"
   image.setAttribute('onclick', onClick);
-  image.setAttribute('cursor', "pointer");
 
   tdButtons.appendChild(image)
 
   tr.style["display"] = "table-row";
   tr.style["width"] = "100%";
   tr.style["background"] = "#444444";
-  // tr.style["position"] = "relative";
-  // tr.style["display"] = "table-cell"
-  td.style["padding"] = "5px 10px"
-  td.style["border-radius"] = "10px 0 0 10px"
+  td.className = "td";
 
   tdButtons.style["border-radius"] = "0 10px 10px 0"
   tdButtons.style["text-align"] = "center";
-  // tdButtons.style["padding"] = "50% 0 0 50%";
-  tdButtons.className = "center";
+  tdButtons.style["width"] = "40px";
   tr.appendChild(tdButtons);
 
   return tr;
@@ -132,24 +134,17 @@ function createInputRow(type){
   tr.style["display"] = "table-row";
   tr.style["width"] = "100%";
   tr.style["background"] = "#444444";
-  // tr.style["position"] = "relative";
-  // tr.style["display"] = "table-cell"
-  td.style["padding"] = "5px 10px"
-  td.style["border-radius"] = "10px 0 0 10px"
+  td.className = "td";
 
   var tdButtons = document.createElement('td');
 
   var onClick = "addUser(" + '"' + type + "-new" + '", "' + type + '"' + ")";
 
   var image = document.createElement('img');
-  image.style["width"] = "25px";
-  image.style["height"] = "25px";
-  image.style["vertical-align"] = "middle";
-  image.style["text-align"] = "center";
+  image.className = "button";
   image.src = "./images/icons/add.png"
   image.id = type + "-add"
   image.setAttribute('onclick', onClick);
-  image.setAttribute('cursor', "pointer");
 
   tdButtons.style["border-radius"] = "0 10px 10px 0"
   tdButtons.style["text-align"] = "center";
@@ -165,7 +160,7 @@ function createInputRow(type){
 function addUser(input, type){
   var text = $("#" + input).val();
 
-  // if(text = "" || text === " "){ return; }
+  if(text == "" || text === " "){ return; }
 
   var tableID = "#table" + type.charAt(0).toUpperCase() + type.slice(1);
 
@@ -213,7 +208,6 @@ function saveAll(){
 
     let content = "";
     content += '<div class="alert">';
-    // content += '<span class="closebtn">&times;</span>';
     content +=
         '<strong>Success!</strong> Data was saved. Run <code class="apply_command" class="clickable" title="Copy to clipboard">' +
         ".plot apply " + id + '</code> to apply your changes.</div>';
@@ -224,11 +218,7 @@ function saveAll(){
 
     function copyToClipboard(text) {
     var dummy = document.createElement("textarea");
-    // to avoid breaking orgain page when copying more words
-    // cant copy when adding below this code
-    // dummy.style.display = 'none'
     document.body.appendChild(dummy);
-    //Be careful if you use texarea. setAttribute('value', value), which works with "input" does not work with "textarea". – Eduard
     dummy.value = text;
     dummy.select();
     document.execCommand("copy");
