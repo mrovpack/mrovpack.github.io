@@ -36,17 +36,12 @@ function createObjectiveButtons(){
 		let border = a;
 		let onclick = "lookFor('" + item + "')";
 
-		var outsideDiv = document.createElement("div");
-		outsideDiv.className = "butt";
-
 		var button = document.createElement('button');
 		button.style["background-image"] = background;
-		// button.style["border"] = "2px solid " + border;
-		// button.className = "cell";
+		// button.style["border"] = "3px solid " + border;
 		button.setAttribute('onclick', onclick);
 
-		outsideDiv.append(button);
-		$("#select").append(outsideDiv);
+		$("#select").append(button);
 	}
 
 }
