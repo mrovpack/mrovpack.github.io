@@ -5,12 +5,45 @@ var objectiveList;
 $.getJSON('https://andreymrovol.github.io/mrovpack-scoreboardData/scoreboard.json', function(status) {
 
 	dataReady(status);
+	createObjectiveButtons();
 	lookFor('Diamenty');
 });
 
 function dataReady(json){
 	scoreboardJSON = json;
 	totalDistances();
+}
+
+function createObjectiveButtons(){
+
+	var objectives = {
+		Diamenty: "rgb(18, 186, 231)",
+		Szmaragdy: "rgb(76, 175, 80)",
+		Zloto: "rgb(226, 218, 21)",
+		Zelazo: "rgb(152, 140, 140)",
+		Wegiel: "rgb(3, 3, 3)",
+		Redstone: "rgb(222, 7, 7)",
+		Lapis: "rgb(7, 47, 219)",
+		Kwarc: "rgb(190, 157, 157)",
+		distanceTotal: "rgb(161, 159, 153)",
+		timePlayed: "rgb(170, 173, 20)"
+	}
+
+	for(item of Object.keys(objectives)){
+		let a = objectives[item];
+
+		let background = "url(https://mrovpack.github.io/assets/objectives/" + item + ".png)";
+		let border = a;
+		let onclick = "lookFor('" + item + "')";
+
+		var button = document.createElement('button');
+		button.style["background-image"] = background;
+		// button.style["border"] = "3px solid " + border;
+		button.setAttribute('onclick', onclick);
+
+		$("#select").append(button);
+	}
+
 }
 
 function lookFor(objective){

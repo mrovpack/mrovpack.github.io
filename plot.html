@@ -4,11 +4,7 @@
 <title>MrovPack Plot Management</title>
 <link rel="shortcut icon" type="image/png" href="https://mrovpack.github.io/assets/icon.png"/>
 <link rel="stylesheet" href="https://mrovpack.github.io/assets/style.css">
-<!-- <meta http-equiv="refresh" content="15" > -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha256-Daf8GuI2eLKHJlOWLRR/zRy9Clqcj4TUSumbxYH9kGI="
-    crossorigin="anonymous" defer></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 <style>
 
 .main{
@@ -17,9 +13,7 @@
 }
 
 .cell{
-  flex: 2 1 0px; /* The important bit. This percentage decides your columns.
- The percent can be px. It just represents your minimum starting width.
-  */
+  flex: 2 1 0px;
   margin: 10px;
   background: #222222;
   color: white;
@@ -30,12 +24,13 @@
   touch-action: manipulation;
   text-align: center;
   justify-self: center;
-  /* align-self: center; */
-  /* padding-bottom: 15px; */
 }
 
 tr{
   text-align: left;
+  display: table-row;
+  width: 100%;
+  background: #444444;
 }
 
 h2{
@@ -44,20 +39,30 @@ h2{
   color: #f57c00;
 }
 
-.center{
-    cursor: pointer;
-}
-
 .table{
   background: #333333;
-  /* border-radius: 10px; */
   padding: 10px 10px;
   width: 100%;
+  max-height: 70vh;
+}
+
+.td{
+  padding: 5px 10px;
+  border-radius: 10px 0 0 10px;
+}
+
+.button{
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
 }
 
 #save{
   text-decoration: underline;
   cursor: pointer;
+  /* color: #669e00; */
 }
 
 #popup {
