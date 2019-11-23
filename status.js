@@ -57,13 +57,13 @@ function dataReady(data){
 	$("#info").html("Server is offline");
 	$("#list").attr('class', 'hide');
 	$("#playerpill").css('visibility', "collapse");
-	document.querySelector("link[rel*='icon']").href = "https://mrovpack.github.io/assets/data/off.png";
+	document.querySelector("link[rel*='icon']").href = "https://mrovpack.github.io/assets/status/off.png";
 	if(online){
 		$("#ip").html('IP: ' + ip + ':' + port);
 		$("#info").html('Server is online ');
 		$("#version").html('Running on version ' + version)
 		$("#playerpill").css('visibility', 'visible');
-		document.querySelector("link[rel*='icon']").href = "https://mrovpack.github.io/assets/data/on.png";
+		document.querySelector("link[rel*='icon']").href = "https://mrovpack.github.io/assets/status/on.png";
 
 		if(players.online != 0){
 			$("#list").attr('class', 'show');
