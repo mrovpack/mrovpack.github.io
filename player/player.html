@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MrovPack Stats</title>
+<link rel="shortcut icon" type="image/png" href="https://mrovpack.github.io/assets/icon.png"/>
+<link rel="stylesheet" href="https://andreymrovol.github.io/resources/style.css">
+<script src='https://andreymrovol.github.io/resources/scripts.js'></script>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, maximum-scale=2.0, minimum-scale=0.7, user-scalable=no">
+<style>
+
+body{
+  font-family: Minecraft-Extended;
+}
+
+#header{
+  height: var(--header-height);
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 0 0 10px 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#icon{
+  height: 50px;
+  width: 50px;
+}
+
+#content{
+  width: 100%;
+}
+
+.select{
+  height: auto;
+  background-color: #202020;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  justify-self: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#name{
+  text-align: center;
+  font-size: 40px;
+  margin-top: 40px;
+}
+
+#items{
+  border: 1px solid transparent;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  align-content: flex-end;
+  width: 80%;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.objectiveButton{
+  height: 140px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70% 50%;
+  background-color: inherit;
+  flex-basis: 15%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  min-width: 100px;
+  max-width: 100px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.scoreCount{
+  width: auto;
+  font-size: 13px;
+  background: rgba(48, 48, 48, 0.5);
+  color: white;
+  margin: auto;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+#special{
+  text-align: center;
+}
+
+.specialStat{
+  color: #55FFFF;
+}
+
+</style>
+</head>
+<body>
+
+  <div id="header">
+
+    <img id="icon" src="https://mrovpack.github.io/assets/icon.png"></img>
+
+  </div>
+
+  <div id="content">
+
+    <div id="name"></div>
+
+    <div id="special"></div>
+    <div id="items"></div>
+
+  </div>
+
+<script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+<script defer src="./player.js"></script>
+
+</body>
+</html>
