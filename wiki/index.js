@@ -1,6 +1,6 @@
 var modsJSON;
 
-$.getJSON('./wiki.json', function(data) {
+$.getJSON('./index.json', function(data) {
 
 	dataReady(data);
 });
