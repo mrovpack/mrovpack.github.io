@@ -16,7 +16,7 @@ if (params) {
   $("#special").html("Player not specified!")
 }
 
-$.getJSON('https://mrovtest.github.io/sd/scoreboard.json', function(status) {
+$.getJSON(UrlScoreboard, function(status) {
 
 	dataReady(status);
 });
@@ -58,7 +58,7 @@ function createIcons(array){
     let objective = item.objective;
 
     let div = document.createElement("div");
-    $(div).css("background-image", "url(https://mrovtest.github.io/iso/" + icon);
+    $(div).css("background-image", "url("+ UrlImages + "" + icon);
     $(div).addClass("objectiveButton");
 
     let count = document.createElement("div");
