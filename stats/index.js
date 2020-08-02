@@ -9,7 +9,7 @@ $.getJSON('https://mrovtest.github.io/sd/statbuttons.json', function(status) {
 
 });
 
-$.getJSON('https://mrovtest.github.io/sd/scoreboard.json', function(status) {
+$.getJSON(UrlScoreboard, function(status) {
 
 	dataReady(status);
 
