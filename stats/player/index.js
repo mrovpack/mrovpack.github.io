@@ -10,7 +10,7 @@ if (params) {
         params = params.substring(1);
 
 				playerName = params;
-				$("#name").html(params)
+				$("#name-input").val(params)
       }
 } else{
   $("#special").html("Player not specified!")
@@ -37,6 +37,11 @@ function dataReady(json){
 
 function totalDistance(){
   let distance = 0;
+
+  if(!playerJSON){
+    $("#special").html("Player not found!").css('color', 'red')
+    return;
+  }
 
   for(item of Object.keys(playerJSON)){
 
@@ -88,3 +93,11 @@ function getSpecialStats(){
   let text = "W grze: " + timePlayed + " / " + "Przebyty dystans: " + distance + " / " + "Śmierci: " + deaths;
   $("#special").html(text);
 }
+
+$(function(){
+ $("#name").keypress(function (e) {
+    if (e.keyCode == 13) {
+        window.location.href = '../player/index.html?' + $("#name-input").val();
+    }
+ });
+});
