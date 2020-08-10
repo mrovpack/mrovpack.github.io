@@ -1,6 +1,4 @@
-const serverIP = "nearvanilla.com";
-
-$.getJSON('https://api.mcsrvstat.us/2/' + serverIP, function(response) {
+$.getJSON('https://api.mcsrvstat.us/2/' + IpServer, function(response) {
 	dataReady(response);
 });
 
