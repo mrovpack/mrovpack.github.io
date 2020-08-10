@@ -27,6 +27,10 @@ function dataReady(json){
   console.log(json)
   totalDist = totalDistance();
 
+  if(playerJSON["death"] == undefined){
+    playerJSON["death"] = 0;
+  }
+
   $.getJSON('https://mrovtest.github.io/sd/statbuttons.json', function(status) {
 
     createIcons(status);
