@@ -1,3 +1,3 @@
-let IpServer = "mrovol.mine.game";
-let UrlScoreboard = "https://andreymrovol.github.io/mrovpack-scoreboardData/scoreboard.json";
-let UrlImages = "https://mrovtest.github.io/iso/";
+let IpServer = "server.mrov.dev";
+let UrlScoreboard = "https://mrov.dev/mrovpack-scoreboardData/scoreboard.json";
+let UrlImages = "https://pack.mrov.dev/renders/";
