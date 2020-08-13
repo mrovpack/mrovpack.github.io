@@ -3,17 +3,15 @@ var players = [];
 var distancesJSON = {};
 let buttons = {};
 
-$.getJSON('https://mrovtest.github.io/sd/statbuttons.json', function(status) {
-
-	createObjectiveButtons(status);
-
-});
-
 $.getJSON(UrlScoreboard, function(status) {
 
 	dataReady(status);
 
-	lookFor('ore_diamond');
+	$.getJSON('https://mrovtest.github.io/sd/statbuttons.json', function(status) {
+
+		createIcons(status);
+
+	});
 });
 
 function dataReady(json){
@@ -33,82 +31,60 @@ function dataReady(json){
 	getTotalDistances();
 }
 
-function createObjectiveButtons(array){
+function createIcons(array){
 
-	for(item of array){
-		let name = item.name;
-		let objective = item.objective;
-		let icon = item.icon;
+  for(item of array){
 
-		let background = "url(https://mrovtest.github.io/iso/" + icon;
-		let onclick = "lookFor('" + objective + "')";
+    let icon = item.icon;
+    let name = item.name;
+    let objective = item.objective;
 
-		var button = document.createElement('button');
-		button.style["background-image"] = background;
-		button.setAttribute('onclick', onclick);
-		button.title = name;
-		button.className = "objectiveButton";
-		$("#select").append(button);
+    let div = document.createElement("div");
+    $(div).css("background-image", "url("+ UrlImages + "" + icon);
+    $(div).addClass("objectiveButton");
 
-		buttons[objective] = name;
+    let count = document.createElement("div");
+    $(count).html(createTable(objective));
+    $(count).addClass("scoreCount");
+
+
+    $(div).append(count);
+
+    $("#items").append(div);
+  }
+}
+
+function createTable(name){
+	let array = getObjectFromArray(scoreboardJSON, "name", name).scores
+
+	var table = document.createElement("table");
+	var tbody = document.createElement('tbody');
+
+	let entries = Object.entries(array);
+	let scores = entries.sort((a, b) => b[1] - a[1]);
+
+	for (item of scores) {
+
+		let player = item[0];
+		let score = item[1];
+
+			var tr = document.createElement('tr');
+			var tdP = document.createElement('td');
+			var tdS = document.createElement('td');
+
+			tdS.style.color = '#ff5555';
+
+			tdP.appendChild(document.createTextNode(player))
+			tdS.appendChild(document.createTextNode(score))
+
+			tr.appendChild(tdP)
+			tr.appendChild(tdS)
+
+			tbody.appendChild(tr);
 	}
 
-}
-
-function lookFor(objective){
-	let arr = getObjectFromArray(scoreboardJSON, "name", objective)
-
-	$("#type").html(buttons[objective])
-	$("#tabelka").html("").append(createScoresTable(arr, objective));
-}
-
-function createScoresTable(array, objective) {
-		var table = document.createElement("table");
-		var tbody = document.createElement('tbody');
-
-		table.setAttribute('align', 'center')
-
-		 let entries = Object.entries(array.scores);
-		 let scores = entries.sort((a, b) => b[1] - a[1]);
-
-		for (item of scores) {
-
-			let player = item[0];
-			let score = item[1];
-
-				var tr = document.createElement('tr');
-				var tdP = document.createElement('td');
-				var tdS = document.createElement('td');
-
-				tdS.style.color = '#ff5555';
-
-				tdP.appendChild(document.createTextNode(player))
-				tdS.appendChild(document.createTextNode(score))
-
-				tr.appendChild(tdP)
-				tr.appendChild(tdS)
-
-				if(objective == "timePlayed"){
-					var tdT = document.createElement('td');
-					var time = Math.round((score / 20 / 60 / 60) * 10 ) / 10;
-					tdT.appendChild(document.createTextNode(time + 'h'));
-					tdT.style.color = '#ffff55';
-					tr.appendChild(tdT);
-				}
-
-				if(objective == "distanceTotal"){
-					var tdD = document.createElement('td');
-					var distance = Math.round((score/ 100 / 1000) * 10 ) / 10;
-					tdD.appendChild(document.createTextNode(distance + 'km'));
-					tdD.style.color = '#ffff55';
-					tr.appendChild(tdD);
-				}
-
-				tbody.appendChild(tr);
-		}
-
-		table.appendChild(tbody);
-		return table;
+	table.appendChild(tbody);
+	return table;
 }
 
 function getTotalDistances(){
@@ -128,7 +104,6 @@ function getTotalDistances(){
     }
 
 		distancesJSON['distanceTotal'][player] = playerData['distanceTotal'];
-		console.log(playerData)
   }
 
 }

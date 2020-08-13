@@ -13,46 +13,7 @@
 
 body{
   font-family: Minecraft-Extended;
-}
-
-#header{
-  height: var(--header-height);
-  padding: 10px 0;
-  margin: 0;
-  border-radius: 0 0 10px 10px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-#icon{
-  height: 50px;
-  width: 50px;
-}
-
-#content{
-  width: 100%;
-  display: flex;
-  position: relative;
-  height: 80vh;
-  flex-direction: column;
-  min-width: 350px;
-}
-
-.select{
-  background-color: #202020;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  max-height: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding-right: 10px;
-  max-height: 70px;
-  display: flex;
-  flex-wrap: wrap;
+  padding: 20px 10px;
 }
 
 ::-webkit-scrollbar {
@@ -69,52 +30,54 @@ body{
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
 
-.objectiveButton{
-  height: 70px;
-  width: 50px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 70% 50%;
-  background-color: inherit;
-  border-radius: 8px;
-  margin: 1px 2px;
+#items{
   border: 1px solid transparent;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  align-content: flex-end;
+  width: 95%;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
-.objectiveButton:hover{
-  border: 1px solid white;
+.objectiveButton{
+  height: 150px;
+  background-position: 50% 42%;
+  background-repeat: no-repeat;
+  background-color: inherit;
+  flex-basis: 10%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  min-width: 170px;
+  max-width: 170px;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
-#type{
-  text-align: center;
-  font-size: 60px;
-  margin-top: 50px;
-}
-
-#tabelka{
-  font-size: 30px;
+.scoreCount{
+  width: auto;
+  font-size: 13px;
+  background: rgba(48, 48, 48, 0.5);
+  color: white;
+  margin: auto;
+  padding: 3px;
+  border-radius: 5px;
 }
 
 </style>
 </head>
 <body>
 
-  <div id="header">
-
-    <img id="icon" src="https://mrovpack.github.io/assets/icon.png"></img>
-
-  </div>
-
   <div id="content">
 
-    <div class="select" id="select"></div>
-
-    <div class="data">
-
-      <div id='type'></div>
-      <div class="table" id="tabelka"></div>
-
-    </div>
+    <div id="items"></div>
 
   </div>
 
