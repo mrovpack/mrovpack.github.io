@@ -86,7 +86,7 @@ function createRow(input, type){
 
   var image = document.createElement('img');
   image.className = "button";
-  image.src = "./images/icons/delete.png"
+  image.src = "https://mrovpack.github.io/assets/icons/delete.png"
   image.setAttribute('onclick', onClick);
 
   tdButtons.appendChild(image)
@@ -142,7 +142,7 @@ function createInputRow(type){
 
   var image = document.createElement('img');
   image.className = "button";
-  image.src = "./images/icons/add.png"
+  image.src = "https://mrovpack.github.io/assets/icons/add.png"
   image.id = type + "-add"
   image.setAttribute('onclick', onClick);
 
