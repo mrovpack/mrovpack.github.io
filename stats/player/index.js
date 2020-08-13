@@ -43,7 +43,8 @@ function totalDistance(){
   let distance = 0;
 
   if(!playerJSON){
-    $("#special").html("Player not found!").css('color', 'red')
+    $("#special").html("Nie znaleziono gracza!").css('color', 'red')
+    $("#name-input").css('border', '1px solid red').css('border-radius', '15px')
     return;
   }
 
