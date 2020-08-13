@@ -1,13 +1,13 @@
 # Mrovpack Main Page
-## [Download](pack.mrov.dev/download)
-### Join server! `server.mrov.dev` [![Foo](https://mrovpack.github.io/assets/status/on.png)](pack.mrov.dev/status)
+## [Download](https://pack.mrov.dev/download)
+### Join server! `server.mrov.dev` [![Foo](https://mrovpack.github.io/assets/status/on.png)](https://pack.mrov.dev/status)
 
-[Stats](pack.mrov.dev/stats)
+[Stats](https://pack.mrov.dev/stats)
 
-[Wiki](pack.mrov.dev/wiki)
+[Wiki](https://pack.mrov.dev/wiki)
 
-[Player Stats](pack.mrov.dev/stats/player)
+[Player Stats](https://pack.mrov.dev/stats/player)
 
-[View Map](pack.mrov.dev/map)
+[View Map](https://pack.mrov.dev/map)
 
-[Discord](pack.mrov.dev/discord)
+[Discord](https://pack.mrov.dev/discord)
