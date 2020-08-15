@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MrovPack</title>
+<title>MrovPack Server Map</title>
 <link rel="shortcut icon" type="image/png" href="https://mrovpack.github.io/assets/icon.png"/>
-<meta http-equiv="refresh" content="0; url=http://mrovol.mine.game:25555"/>
+<link rel="stylesheet" href="https://andreymrovol.github.io/resources/style.css">
+<script src='https://andreymrovol.github.io/resources/scripts.js'></script>
+
+<style>
+
+html, body {
+  margin:0px;
+  padding: 0;
+}
+
+body{
+  height: calc(100vh - 3px);
+}
+
+iframe{
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+
+</style>
 </head>
 <body>
+
+  <iframe id="map" src="http://mrovol.mine.game:25555"></iframe>
+
 </body>
 </html>
