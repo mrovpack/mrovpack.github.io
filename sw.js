@@ -14,8 +14,8 @@ self.addEventListener('install', function(e) {
       './wiki/index.json',
       'https://mrov.dev/mrovpack-scoreboardData/scoreboard.json',
       'https://mrovtest.github.io/sd/statbuttons.json',
-      'https://andreymrovol.github.io/resources/style.css',
-      'https://mrovpack.github.io/assets/icon.png'
+      'https://mrov.dev/resources/style.css',
+      'https://pack.mrov.dev/assets/icon.png'
      ]);
    })
  );
