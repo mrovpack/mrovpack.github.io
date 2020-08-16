@@ -1,0 +1,18 @@
+{
+          "background_color": "#f57c00",
+          "display": "standalone",
+          "orientation":"portrait",
+          "theme_color": "#f57c00",
+          "short_name": "MrovPack",
+          "name": "MrovPack Website",
+          "description": "Get all needed info!",
+          "lang": "en-US",
+          "icons": [
+          {
+            "src": "./pwa.png",
+            "sizes": "512x512",
+            "type": "image/png"
+          }
+          ],
+          "start_url": "index.html?launcher=true"
+          }
