@@ -9,10 +9,10 @@
           "lang": "en-US",
           "icons": [
           {
-            "src": "https://mrovpack.github.io/assets/icon.png",
-            "sizes": "128x128",
+            "src": "./pwa.png",
+            "sizes": "512x512",
             "type": "image/png"
           }
           ],
-          "start_url": "index.html"
+          "start_url": "index.html?launcher=true"
           }
