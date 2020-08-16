@@ -2,13 +2,14 @@
 <html>
 <head>
 <title>MrovPack</title>
-<!-- <link rel="shortcut icon" type="image/png" href=""/> -->
+<link rel="shortcut icon" type="image/png" href="https://mrovpack.github.io/assets/icon.png"/>
 <link rel="stylesheet" href="https://andreymrovol.github.io/resources/style.css">
 <script src='https://andreymrovol.github.io/resources/scripts.js'></script>
 
 <script src="https://mrovpack.github.io/data.js"></script>
 
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.5, maximum-scale=2.0, minimum-scale=0.7, user-scalable=no">
+<link rel="manifest" href="./manifest.json">
 <style>
 
 body{
@@ -25,10 +26,6 @@ body{
   margin-top: 40px;
 }
 
-p{
-  margin:0;
-}
-
 input{
   outline: 0;
   border: 0;
@@ -41,15 +38,10 @@ input{
 
 #links{
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  margin-top: 30px;
-}
-
-#links a{
-  padding: 5px;
-  font-size: 18px;
+  align-self: center;
+  justify-self: center;
+  margin: 0 auto;
+  padding: 10px;
 }
 
 </style>
@@ -60,7 +52,7 @@ input{
 
     <div id="name">
 
-      <p> Cześć, </p>
+      <div> Cześć, </div>
       <input id="name-input" placeholder="Jak sie nazywasz?"></input>
 
     </div>
@@ -72,5 +64,13 @@ input{
 <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
 
 <script src="./index.js"></script>
+
+<script>
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('./sw.js')
+           .then(function() { console.log("Service Worker Registered"); });
+}
+</script>
 </body>
 </html>

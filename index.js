@@ -37,5 +37,5 @@ for(item of Object.keys(links)){
   $(A).attr('href', link);
   $(A).html(name);
 
-  $("#links").append(A);
+  $("#links").append(A).append('<br>');
 }
