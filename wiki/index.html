@@ -10,31 +10,86 @@
 <style>
 
 body{
-  font-size: 18px;
   font-family: Minecraft-Extended;
+  padding: 20px 10px;
 }
 
-h1{
-  text-align: center;
-}
-
-ul{
-  width: 250px;
-  text-align: center;
-  align-self: center;
-  justify-self: center;
+#items{
+  border: 1px solid transparent;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  align-content: flex-end;
+  width: 95%;
   margin: 0 auto;
-  padding: 10px;
-  list-style-type: none;
+  max-width: 1200px;
+}
+
+.objectiveButton{
+  height: 100px;
+  background-position: 50% 42%;
+  background-repeat: no-repeat;
+  background-color: inherit;
+  background-size: 100px;
+  flex-basis: 10%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  min-width: 113px;
+  max-width: 113px;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.scoreCount{
+  width: auto;
+  font-size: 13px;
+  background: rgba(48, 48, 48, 0.5);
+  color: white;
+  margin: auto;
+  padding: 3px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#search{
+  /* background: yellow; */
+  text-align: center;
+  font-size: 30px;
+  margin-top: 25px;
+}
+
+input{
+  outline: 0;
+  border: 0;
+  background: 0;
+  color: #cacaca;
+  text-align: center;
+  font-size: 30px;
+  font-family: Minecraft-Extended;
+  border: 1px solid white;
+  border-radius: 25px;
 }
 
 </style>
 </head>
 <body>
 
-  <h1> Mod Wiki List </h1>
+  <div id="content">
 
-  <div id="list"></div>
+    <div id="search">
+      <input id="search-input" placeholder="Search"></input>
+    </div>
+
+    <div id="items"></div>
+
+  </div>
 
  <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
 <script src="./index.js"></script>
