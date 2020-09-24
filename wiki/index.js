@@ -1,33 +1,69 @@
-var modsJSON;
+// UrlImages = "https://mrovtest.github.io/img/"
 
 $.getJSON('./index.json', function(data) {
 
 	dataReady(data);
 });
 
-function dataReady(json){
-	modsJSON = json;
-  createList(json);
+$("#search-input").on('input', function() {
+		let input = $("#search-input").val();
+
+		searchFor(input)
+});
+
+function searchFor(query){
+	$(".scoreCount").each(function(index){
+
+		query = query.toLowerCase();
+
+		$(this).parent().css('display', 'flex')
+
+		if(!$(this).html().toLowerCase().includes(query)){
+			$(this).parent().css('display', 'none')
+		}
+
+		if(!query || query == ""){
+			$(this).parent().css('display', 'flex')
+		}
+
+		// console.log(index, this)
+		// console.log($(this).parent().css('display', 'none'))
+	})
 }
 
+function dataReady(json){
 
-function createList(json){
-  var list = $("#list");
-  var li = document.createElement("ul");
+	for(item of json){
+		let name = item.name;
+		let Path = item.path;
+		let link = item.link;
 
-  for(entry in json){
-    var a = entry;
-    var b = json[entry]
+		let append = item.append;
 
+		let items = item.items;
 
-    var link = document.createElement('a');
-    link.innerHTML = a;
-    link.href = b;
+		for(entry of items){
 
-    var listItem = document.createElement('li');
-    listItem.appendChild(link);
-    li.appendChild(listItem);
-  }
+			let icon = entry.toLowerCase().replace(/ /g, "-");
 
-  list.append(li);
+			let div = document.createElement("div");
+	    $(div).css("background-image", "url("+ UrlImages + Path + icon + ".png");
+	    $(div).addClass("objectiveButton");
+
+			if(append){
+				icon += append;
+			}
+
+			$(div).attr('onClick', "location.href=" + '"' + link + icon + '"')
+
+			let count = document.createElement("div");
+	    $(count).html(entry);
+	    $(count).addClass("scoreCount");
+
+			$(div).append(count);
+
+	    $("#items").append(div);
+		}
+
+	}
 }
