@@ -26,8 +26,6 @@ function searchFor(query){
 			$(this).parent().css('display', 'flex')
 		}
 
-		// console.log(index, this)
-		// console.log($(this).parent().css('display', 'none'))
 	})
 }
 
@@ -46,15 +44,14 @@ function dataReady(json){
 
 			let icon = entry.toLowerCase().replace(/ /g, "-");
 
-			let div = document.createElement("div");
+			let div = document.createElement("a");
 	    $(div).css("background-image", "url("+ UrlImages + Path + icon + ".png");
 	    $(div).addClass("objectiveButton");
+			$(div).attr('href', link + icon)
 
 			if(append){
 				icon += append;
 			}
-
-			$(div).attr('onClick', "location.href=" + '"' + link + icon + '"')
 
 			let count = document.createElement("div");
 	    $(count).html(entry);
