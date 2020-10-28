@@ -47,11 +47,11 @@ function dataReady(json){
 			let div = document.createElement("a");
 	    $(div).css("background-image", "url("+ UrlImages + Path + icon + ".png");
 	    $(div).addClass("objectiveButton");
-			$(div).attr('href', link + icon)
 
 			if(append){
 				icon += append;
 			}
+			$(div).attr('href', link + icon)
 
 			let count = document.createElement("div");
 	    $(count).html(entry);
